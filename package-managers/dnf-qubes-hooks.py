@@ -20,7 +20,7 @@
 #
 
 from __future__ import absolute_import
-from distutils.version import LooseVersion
+from packaging.version import LooseVersion
 import logging
 import dnf
 import dnf.const

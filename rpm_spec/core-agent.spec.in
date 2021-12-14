@@ -31,7 +31,7 @@
 %endif
 
 %if 0%{?rhel} == 8
-%define plateform_python3_sitelib %(/usr/libexec/platform-python -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
+%define plateform_python3_sitelib %(/usr/libexec/platform-python -c 'import sysconfig; print(sysconfig.get_path("platlib"))')
 %endif
 
 %define scriptletfuns is_static() { \

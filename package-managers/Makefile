@@ -1,10 +1,10 @@
 LIBDIR ?= /usr/lib
 STATEDIR ?= /var/lib
 SYSCONFDIR ?= /etc
-PYTHON2_SITELIB = $(shell python2 -c 'import distutils.sysconfig; print distutils.sysconfig.get_python_lib()')
-PYTHON3_SITELIB = $(shell $(PYTHON) -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
+PYTHON2_SITELIB = $(shell python2 -c 'import sysconfig; print sysconfig.get_path("platlib")')
+PYTHON3_SITELIB = $(shell $(PYTHON) -c 'import sysconfig; print(sysconfig.get_path("platlib"))')
 ifeq ($(shell rpm --eval %{centos_ver} 2>/dev/null),8)
-PLATEFORM_PYTHON3_SITELIB = $(shell /usr/libexec/platform-python -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
+PLATEFORM_PYTHON3_SITELIB = $(shell /usr/libexec/platform-python -c 'import sysconfig; print(sysconfig.get_path("platlib"))')
 endif
 APTCONFDIR = $(SYSCONFDIR)/apt
 YUMCONFDIR = $(SYSCONFDIR)/yum.conf.d
